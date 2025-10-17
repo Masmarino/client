@@ -124,6 +124,7 @@ public extension KubeConfig {
 	}
 }
 
+#if os(macOS)
 internal extension String {
 
 	func stringByExpandingTildePath() -> String {
@@ -145,3 +146,4 @@ internal extension String {
 		return FileManager.default.homeDirectoryForCurrentUser.path + "/" + relativePath
 	}
 }
+#endif
