@@ -43,9 +43,11 @@ public extension KubernetesClientConfig {
 		logger: Logger?
 	) throws -> KubernetesClientConfig? {
 		let kubeConfig: KubeConfig? = {
+			#if os(macOS)
 			if let config = try? KubeConfig.fromEnvironment() {
 				return config
 			}
+			#endif
 
 			if let config = try? KubeConfig.fromDefaultLocalConfig() {
 				return config
